@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <title>加载底部</title>
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <style>
+    *{
+        margin: 0;
+        padding:0;
+        -webkit-tap-highlight-color:rgba(0,0,0,0);
+        -webkit-text-size-adjust:none;
+    }
+    html{
+        font-size:10px;
+    }
+    body{
+        background-color: #f5f5f5;
+        font-size: 1.2em;
+    }
+    #header {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background: #CD235C;
+    padding: 0;
+    color: #eee;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#footer {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    background: #444;
+    padding: 0;
+    border-top: 1px solid #444;
+}
+
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 45px;
+    left: 0;
+    width: 100%;
+    background: #ccc;
+    overflow-y: scroll;
+}
+
+#scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+    /*.header{
+        height: 44px;
+        line-height: 44px;
+        border-bottom: 1px solid #ccc;
+        background-color: #eee;
+    }*/
+    .header h1{
+        text-align: center;
+        font-size: 2rem;
+        font-weight: normal;
+    }
+    .content{
+    position: relative;
+   height: 100%;
+   overflow-x: hidden;
+   overflow-y: scroll;
+    /* 增加该属性，可以增加弹性 */
+    -webkit-overflow-scrolling: touch;
+    
+        max-width: 640px;
+        margin: 0 auto;
+       /* height: 100%;*/
+        background-color: #fff;
+        overflow-x: hidden;
+        overflow-y: scroll; 
+    }
+    .content .item{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align:center;
+        -webkit-box-align:center;
+        box-align:center;
+        -webkit-align-items:center;
+        align-items:center;
+        padding:3.125%;
+        border-bottom: 1px solid #ddd;
+        color: #333;
+        text-decoration: none;
+    }
+    .content .item img{
+        display: block;
+        width: 40px;
+        height: 40px;
+        border:1px solid #ddd;
+    }
+    .content .item h3{
+        display: block;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        width: 100%;
+        max-height: 40px;
+        overflow: hidden;
+        line-height: 20px;
+        margin: 0 10px;
+        font-size: 1.2rem;
+    }
+    .content .item .date{
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        color: #999;
+    }
+    .opacity{
+        -webkit-animation: opacity 0.3s linear;
+        animation: opacity 0.3s linear;
+    }
+    #pinjiadiv{position: absolute;z-index: 2;bottom: 0;left: 0; height:5.4rem;width:100%;}
+    .pinjiadiv{
+    display: flex;
+    flex-flow:row;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    width: 95%;
+    height: 5.4rem;
+    padding:0px 2.5%;
+    border-top: 1px solid #e0e1e3; 
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+.disabledinput{
+    background:#f1f1f2!important;   
+}
+.disabledinput input{
+    background:#f1f1f2!important;
+}
+.disabledinput .pinjsubmit{
+    background:#a7a9ac!important;
+    color: #fff;
+}
+.pinjiadiv input{
+    width: 63%;
+    height: 2.8rem;
+    color: #a7a9ac;
+    text-indent: 0.4rem;
+    font-size: 1.3333333333rem;
+    border: 1px solid #dcddde;
+    border-radius: 10px;
+}
+
+.pinjsubmit{
+    display: flex;
+    flex-flow:row;
+    justify-content: center;
+    align-items: center;
+    width: 23%;
+    height: 2.8rem;
+    line-height: 2.8rem;
+     color: #a7a9ac;    
+    font-size: 1.3333333333rem;
+    border-radius: 10px;
+    text-align: center;
+     background:none;  
+   outline:none;  
+   border:0px; 
+   -webkit-appearance: button;
+   -webkit-appearance: none;
+    border: 1px solid #dcddde;
+}
+    @-webkit-keyframes opacity {
+        0% {
+            opacity:0;
+        }
+        100% {
+            opacity:1;
+        }
+    }
+    @keyframes opacity {
+        0% {
+            opacity:0;
+        }
+        100% {
+            opacity:1;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="../dist/dropload.css">
+
+                  
+</head>
+<body onload="loaded()">
+
+<div class="main" id="wrapper"> 
+    <div id="scroller">
+        <div class="content">
+            <div class="lists"></div>
+        </div>
+    </div>
+</div>
+<div class="pinjiadiv" id="pinjiadiv">
+    <input onkeyup="this.value=(this.value.match(/\d+(\.\d{0,2})?/)||[''])[0]" type="text" name="mysay" placeholder="我也说两句"> <a class="pinjsubmit">发送</a>
+</div>
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="js/zepto.min.js"></script>
+<script src="../dist/dropload.min.js"></script>
+<script>
+$(function(){
+    // 页数
+    var page = 0;
+    // 每页展示5个
+    var size = 5;
+
+    // dropload
+    $('.content').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            page++;
+            // 拼接HTML
+            var result = '';
+            $.ajax({
+                type: 'GET',
+                url: 'http://ons.me/tools/dropload/json.php?page='+page+'&size='+size,
+                dataType: 'json',
+                success: function(data){
+                    var arrLen = data.length;
+                    if(arrLen > 0){
+                        for(var i=0; i<arrLen; i++){
+                            result +=   '<a class="item opacity" href="'+data[i].link+'">'
+                                            +'<img src="'+data[i].pic+'" alt="">'
+                                            +'<h3>'+data[i].title+'</h3>'
+                                            +'<span class="date">'+data[i].date+'</span>'
+                                        +'</a>';
+                        }
+                    // 如果没有数据
+                    }else{
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                    }
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        // 插入数据到页面，放到最后面
+                        $('.lists').append(result);
+                        // 每次数据插入，必须重置
+                        me.resetload();
+                    },1000);
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

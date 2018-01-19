@@ -268,7 +268,7 @@ $(function(){
                     var arrLen = data.length;
                     if(arrLen > 0){
                         for(var i=0; i<arrLen; i++){
-                            result +=   '<a class="item opacity" href="'+data[i].link+'">'
+                            result +=   '<a class="item opacity" href="http://htmlpreview.github.io/?https://blingblingwebopen.github.io/puxin/">'
                                             +'<img src="'+data[i].pic+'" alt="">'
                                             +'<h3>'+data[i].title+'</h3>'
                                             +'<span class="date">'+data[i].date+'</span>'
@@ -287,7 +287,7 @@ $(function(){
                         $('.lists').append(result);
                         // 每次数据插入，必须重置
                         me.resetload();
-                    },1000);
+                    },300);
                 },
                 error: function(xhr, type){
                     alert('Ajax error!');
